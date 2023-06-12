@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: io.ebean:ebean-externalmapping-api:13.15.0" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="io.ebean" artifactId="ebean-externalmapping-api" version="13.15.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.ebean/ebean-externalmapping-api/13.15.0/d62b987cdbecf21b69b87f47f2e1755fb6dc0d0d/ebean-externalmapping-api-13.15.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.ebean/ebean-externalmapping-api/13.15.0/175c2e2b39e8ce2f592f615412e326ef76e281e7/ebean-externalmapping-api-13.15.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

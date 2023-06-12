@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: io.ebean:ebean-migration:13.7.0" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="io.ebean" artifactId="ebean-migration" version="13.7.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.ebean/ebean-migration/13.7.0/358ad9b829e773f4af9e7e5a1f843e681a9b825f/ebean-migration-13.7.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.ebean/ebean-migration/13.7.0/82cd16c5995f105c80194e1ede3e4cbeafdd1e41/ebean-migration-13.7.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

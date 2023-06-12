@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: io.avaje:avaje-config:2.4" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="io.avaje" artifactId="avaje-config" version="2.4" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.avaje/avaje-config/2.4/a783c9fc94acae908dfa04ef4584c55daec1361c/avaje-config-2.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.avaje/avaje-config/2.4/81124b204811e5fcda96e2cfd429b7e88e05ed47/avaje-config-2.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

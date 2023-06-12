@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: io.ebean:ebean-ddl-runner:2.2" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="io.ebean" artifactId="ebean-ddl-runner" version="2.2" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.ebean/ebean-ddl-runner/2.2/bb1426d7aeb7e518da9be5c6a65ed44d51c3c0a7/ebean-ddl-runner-2.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.ebean/ebean-ddl-runner/2.2/678e13e19778c943d9c24e1257f5c82429c1b359/ebean-ddl-runner-2.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

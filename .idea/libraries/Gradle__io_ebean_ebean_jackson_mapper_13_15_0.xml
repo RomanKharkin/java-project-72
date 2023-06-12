@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: io.ebean:ebean-jackson-mapper:13.15.0" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="io.ebean" artifactId="ebean-jackson-mapper" version="13.15.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.ebean/ebean-jackson-mapper/13.15.0/46135e7ae675c84aa8a1f65911783849b3c59e2a/ebean-jackson-mapper-13.15.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.ebean/ebean-jackson-mapper/13.15.0/303f3b358c93513aee720247a52b71149e6d1b05/ebean-jackson-mapper-13.15.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

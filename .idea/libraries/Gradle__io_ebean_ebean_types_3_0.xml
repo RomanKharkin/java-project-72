@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: io.ebean:ebean-types:3.0" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="io.ebean" artifactId="ebean-types" version="3.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.ebean/ebean-types/3.0/e611166eaa2ea90ac4965e2f05e9f415e2fcdc5c/ebean-types-3.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.ebean/ebean-types/3.0/211a5b1654e2b2a7da28cd613ed868ae8a6c3c6c/ebean-types-3.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

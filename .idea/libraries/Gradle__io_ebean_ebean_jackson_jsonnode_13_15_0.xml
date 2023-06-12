@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: io.ebean:ebean-jackson-jsonnode:13.15.0" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="io.ebean" artifactId="ebean-jackson-jsonnode" version="13.15.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.ebean/ebean-jackson-jsonnode/13.15.0/bdda27f56e2ba7255de4e8891f728df9c295a642/ebean-jackson-jsonnode-13.15.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.ebean/ebean-jackson-jsonnode/13.15.0/891356786e8033187574231f6eed0230f7751539/ebean-jackson-jsonnode-13.15.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

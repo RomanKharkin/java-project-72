@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: io.ebean:ebean-platform-oracle:13.15.0" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="io.ebean" artifactId="ebean-platform-oracle" version="13.15.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.ebean/ebean-platform-oracle/13.15.0/ec8866480e8f63931c961da2e0b2aa001d032ac2/ebean-platform-oracle-13.15.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.ebean/ebean-platform-oracle/13.15.0/1f2a4ab325f37236032f1a3a085583d575d36dfd/ebean-platform-oracle-13.15.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

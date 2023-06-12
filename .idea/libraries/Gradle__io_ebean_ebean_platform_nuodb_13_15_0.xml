@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: io.ebean:ebean-platform-nuodb:13.15.0" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="io.ebean" artifactId="ebean-platform-nuodb" version="13.15.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.ebean/ebean-platform-nuodb/13.15.0/80316150a0f8c91cec827a98e00fd3e8c7c8a098/ebean-platform-nuodb-13.15.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.ebean/ebean-platform-nuodb/13.15.0/8d26009ba4b55b877a71f67ea03ba7cb95b26bcc/ebean-platform-nuodb-13.15.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

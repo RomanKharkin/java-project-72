@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: io.ebean:ebean-migration-auto:1.2" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="io.ebean" artifactId="ebean-migration-auto" version="1.2" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.ebean/ebean-migration-auto/1.2/ba5a4ddb48ae5185c72646f085cb257b228c5cd1/ebean-migration-auto-1.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.ebean/ebean-migration-auto/1.2/4b70bc0e6f150fb1aed283f4df4a4d7d173c6c25/ebean-migration-auto-1.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

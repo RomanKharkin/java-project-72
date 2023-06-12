@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: io.avaje:avaje-applog:1.0" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="io.avaje" artifactId="avaje-applog" version="1.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.avaje/avaje-applog/1.0/6f15c997d344f5aaf4ecd77ef7a8d3875d37fb33/avaje-applog-1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.avaje/avaje-applog/1.0/835a3c6e07d0d4c71a1f68aadef0ce722669fd55/avaje-applog-1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
