@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: io.ebean:ebean-querybean:13.11.0" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="io.ebean" artifactId="ebean-querybean" version="13.11.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.ebean/ebean-querybean/13.11.0/38dc3c65ef32d8647ec492a963d64c6c5972ee42/ebean-querybean-13.11.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.ebean/ebean-querybean/13.11.0/f92235f460bbcc5542c168ef890b6903142bf876/ebean-querybean-13.11.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

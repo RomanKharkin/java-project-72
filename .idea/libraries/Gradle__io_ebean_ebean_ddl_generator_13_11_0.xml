@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: io.ebean:ebean-ddl-generator:13.11.0" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="io.ebean" artifactId="ebean-ddl-generator" version="13.11.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.ebean/ebean-ddl-generator/13.11.0/8401fa8ccd5abb9970adb67abda57b618e8fdf79/ebean-ddl-generator-13.11.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.ebean/ebean-ddl-generator/13.11.0/cb89bea25788c8ce78ea95c33bcf886f00909ba9/ebean-ddl-generator-13.11.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

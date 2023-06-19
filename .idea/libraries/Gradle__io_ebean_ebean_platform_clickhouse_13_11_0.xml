@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: io.ebean:ebean-platform-clickhouse:13.11.0" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="io.ebean" artifactId="ebean-platform-clickhouse" version="13.11.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.ebean/ebean-platform-clickhouse/13.11.0/f179dc70dc6114acdaa8c6e4a3e1e528bae65384/ebean-platform-clickhouse-13.11.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.ebean/ebean-platform-clickhouse/13.11.0/d32a2437bbd3909c019347fe91852157d522ec2f/ebean-platform-clickhouse-13.11.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

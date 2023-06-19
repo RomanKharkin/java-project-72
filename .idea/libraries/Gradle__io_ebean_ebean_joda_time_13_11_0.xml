@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: io.ebean:ebean-joda-time:13.11.0" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="io.ebean" artifactId="ebean-joda-time" version="13.11.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.ebean/ebean-joda-time/13.11.0/ee02482afa5d0069baf77bf58b27fc5625c74abb/ebean-joda-time-13.11.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.ebean/ebean-joda-time/13.11.0/1a47bab4da748ad6fa370a6bca4d1fc6524e82dc/ebean-joda-time-13.11.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

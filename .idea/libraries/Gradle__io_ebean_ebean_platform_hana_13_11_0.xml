@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: io.ebean:ebean-platform-hana:13.11.0" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="io.ebean" artifactId="ebean-platform-hana" version="13.11.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.ebean/ebean-platform-hana/13.11.0/19a00d87abe8f9f1fd4e84bd292ec88c3a8fc555/ebean-platform-hana-13.11.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.ebean/ebean-platform-hana/13.11.0/e4e6d8296426d9b400daec975cf8e0802923985c/ebean-platform-hana-13.11.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

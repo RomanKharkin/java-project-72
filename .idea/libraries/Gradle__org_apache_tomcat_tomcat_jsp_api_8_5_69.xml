@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.apache.tomcat:tomcat-jsp-api:8.5.69" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.apache.tomcat" artifactId="tomcat-jsp-api" version="8.5.69" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-jsp-api/8.5.69/c9e0cee629b0d27c3b62e0756bcf4c3785d2eb91/tomcat-jsp-api-8.5.69.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-jsp-api/8.5.69/5964890fe508410ec1a58eeb27dce08511920e83/tomcat-jsp-api-8.5.69-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

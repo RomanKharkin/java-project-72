@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: io.ebean:ebean-datasource:8.4" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="io.ebean" artifactId="ebean-datasource" version="8.4" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.ebean/ebean-datasource/8.4/65741b7aa8a5e13d0043cd581bd05535392acd99/ebean-datasource-8.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/io.ebean/ebean-datasource/8.4/5377f809816095e20d0ab8ef6552d74ab8938757/ebean-datasource-8.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
