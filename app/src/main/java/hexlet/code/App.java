@@ -1,15 +1,26 @@
 package hexlet.code;
 
+import hexlet.code.controllers.RootController;
+import hexlet.code.controllers.UrlController;
 import io.javalin.Javalin;
 import io.javalin.rendering.template.JavalinThymeleaf;
 import nz.net.ultraq.thymeleaf.layoutdialect.LayoutDialect;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
-
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
+
+import static io.javalin.apibuilder.ApiBuilder.get;
+import static io.javalin.apibuilder.ApiBuilder.path;
 
 
 public class App {
+    private static String getMode() {
+        return System.getenv().getOrDefault("APP_ENV", "development");
+    }
+
+    private static boolean isProduction() {
+        return getMode().equals("production");
+    }
 
     public static Javalin getApp() {
         Javalin app = Javalin.create(config -> {
@@ -29,8 +40,22 @@ public class App {
         app.start();
     }
 
+//    private static void addRoutes(Javalin app) {
+//        app.get("/", RootController.welcome);
+//
+//        UrlController.addRoutes("urls", app);
+//    }
+
     private static void addRoutes(Javalin app) {
-        app.get("/", ctx -> ctx.render("index.html"));
+        app.get("/", RootController.newUrl);
+        app.post("/", RootController.createUrl);
+
+        app.routes(() -> {
+            path("urls", () -> {
+                get(UrlController.listUrls);
+                get("{id}", UrlController.showUrl);
+            });
+        });
     }
 
     // Javalin поддерживает работу с шаблонизатором thymeleaf
