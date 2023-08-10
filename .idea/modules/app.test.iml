@@ -25,7 +25,7 @@
     <orderEntry type="library" name="Gradle: javax.activation:activation:1.1.1" level="project" />
     <orderEntry type="library" name="Gradle: nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.2.0" level="project" />
     <orderEntry type="library" name="Gradle: org.glassfish.jaxb:jaxb-runtime:2.3.6" level="project" />
-    <orderEntry type="library" name="Gradle: org.postgresql:postgresql:42.5.4" level="project" />
+    <orderEntry type="library" name="Gradle: org.postgresql:postgresql:42.6.0" level="project" />
     <orderEntry type="library" name="Gradle: org.slf4j:slf4j-simple:2.0.5" level="project" />
     <orderEntry type="library" name="Gradle: org.thymeleaf.extras:thymeleaf-extras-java8time:3.0.4.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.thymeleaf:thymeleaf:3.1.1.RELEASE" level="project" />
@@ -123,7 +123,7 @@
     <orderEntry type="library" scope="RUNTIME" name="Gradle: nz.net.ultraq.thymeleaf:thymeleaf-expression-processor:3.1.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: nz.net.ultraq.groovy:groovy-extensions:2.1.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: com.sun.activation:jakarta.activation:1.2.2" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.checkerframework:checker-qual:3.5.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.checkerframework:checker-qual:3.31.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.junit.platform:junit-platform-engine:1.9.2" level="project" />
   </component>
   <component name="TestModuleProperties" production-module="app.main" />

@@ -40,11 +40,6 @@ public class App {
         app.start();
     }
 
-//    private static void addRoutes(Javalin app) {
-//        app.get("/", RootController.welcome);
-//
-//        UrlController.addRoutes("urls", app);
-//    }
 
     private static void addRoutes(Javalin app) {
         app.get("/", RootController.newUrl);

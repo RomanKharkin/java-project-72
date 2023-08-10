@@ -3,6 +3,7 @@ package hexlet.code.controllers;
 import hexlet.code.domain.Url;
 import hexlet.code.domain.query.QUrl;
 import io.javalin.http.Handler;
+import io.javalin.http.HttpStatus;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -23,6 +24,7 @@ public final class RootController {
         } catch (MalformedURLException e) {
             ctx.sessionAttribute("error", "Некорректный URL");
             ctx.attribute(NEW_URL_FORM_PARAM, newUrl);
+            ctx.status(HttpStatus.UNPROCESSABLE_CONTENT);
             ctx.render("index.html");
             return;
         }

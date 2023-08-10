@@ -28,6 +28,4 @@ public final class UrlController {
         ctx.attribute("url", url);
         ctx.render("show.html");
     };
-
-
 }
