@@ -48,7 +48,7 @@ class RootControllerTest {
     @BeforeEach
     void beforeEach() {
         Database db = DB.getDefault();
-        db.truncate("url");
+//        db.truncate("url");
         Url existingUrl = new Url("https://roman.com");
         existingUrl.save();
     }

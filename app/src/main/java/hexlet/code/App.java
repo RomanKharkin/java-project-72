@@ -11,6 +11,7 @@ import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
 import static io.javalin.apibuilder.ApiBuilder.get;
 import static io.javalin.apibuilder.ApiBuilder.path;
+import static io.javalin.apibuilder.ApiBuilder.post;
 
 
 public class App {
@@ -49,6 +50,7 @@ public class App {
             path("urls", () -> {
                 get(UrlController.listUrls);
                 get("{id}", UrlController.showUrl);
+                post("{id}/checks", UrlController.checkUrl);
             });
         });
     }
