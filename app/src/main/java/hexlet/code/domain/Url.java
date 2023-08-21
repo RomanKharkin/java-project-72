@@ -5,7 +5,9 @@ import io.ebean.annotation.WhenCreated;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public final class Url extends Model {
@@ -16,6 +18,17 @@ public final class Url extends Model {
     private Date createdAt;
 
     String name;
+
+    public List<UrlCheck> getUrlChecks() {
+        return urlChecks;
+    }
+
+    public void setUrlChecks(List<UrlCheck> urlChecks) {
+        this.urlChecks = urlChecks;
+    }
+
+    @OneToMany(mappedBy = "url")
+    List<UrlCheck> urlChecks;
 
     public Url(String name) {
         this.name = name;

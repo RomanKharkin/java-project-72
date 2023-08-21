@@ -24,23 +24,30 @@
         </table>
 
         <h2 class="mt-5">Проверки</h2>
-        <form method="post" action="/urls/2/checks" th:action="@{/urls/${url.id}/checks}">
+        <form method="post" action="/urls/2/checks" th:action="@{/urls/{id}/checks(id=${url.id})}">
             <button type="submit" class="btn btn-primary">Запустить проверку</button>
         </form>
 
         <table class="table table-bordered table-hover mt-3">
             <thead>
             <tr>
-                <th class="col-1">ID</th>
+                <th class="col-1" >ID</th>
                 <th class="col-1">Код ответа</th>
                 <th>title</th>
                 <th>h1</th>
                 <th>description</th>
                 <th class="col-2">Дата проверки</th>
-            </tr>
             </thead>
+            </tr>
             <tbody>
-
+            <tr th:each="urlCheck : ${url.urlChecks}" >
+                <td th:text="*{urlCheck.id}">121</td>
+                <td th:text="*{urlCheck.statusCode}">121</td>
+                <td th:text="*{urlCheck.title}">Title</td>
+                <td th:text="*{urlCheck.h1}">H1</td>
+                <td th:text="*{urlCheck.description}">Descr</td>
+                <td th:text="${#dates.format(urlCheck.createdAt, 'dd/MM/yyyy HH:mm')}">27/06/2023 02:43</td>
+            </tr>
             </tbody>
         </table>
     </div>
