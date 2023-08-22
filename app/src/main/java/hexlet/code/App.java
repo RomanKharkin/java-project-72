@@ -49,6 +49,7 @@ public class App {
         app.routes(() -> {
             path("urls", () -> {
                 get(UrlController.listUrls);
+                post(UrlController.fakePostUrls);
                 get("{id}", UrlController.showUrl);
                 post("{id}/checks", UrlController.checkUrl);
             });

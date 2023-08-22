@@ -21,6 +21,8 @@ public final class UrlController {
         ctx.render("urls.html");
     };
 
+    public static Handler fakePostUrls = UrlController.listUrls;
+
     public static Handler showUrl = ctx -> {
         long id = ctx.pathParamAsClass("id", Long.class).getOrDefault(null);
         Url url = new QUrl().id.equalTo(id).findOne();
