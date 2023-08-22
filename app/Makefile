@@ -1,3 +1,12 @@
+setup:
+	gradle wrapper --gradle-version 8.3
+
+clean:
+	./gradlew clean
+
+build:
+	./gradlew clean build
+
 run-dist:
 	./build/install/app/bin/app -h
 
