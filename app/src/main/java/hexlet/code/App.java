@@ -44,12 +44,11 @@ public class App {
 
     private static void addRoutes(Javalin app) {
         app.get("/", RootController.newUrl);
-        app.post("/", RootController.createUrl);
 
         app.routes(() -> {
             path("urls", () -> {
                 get(UrlController.listUrls);
-                post(UrlController.fakePostUrls);
+                post(UrlController.createUrl);
                 get("{id}", UrlController.showUrl);
                 post("{id}/checks", UrlController.checkUrl);
             });

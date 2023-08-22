@@ -122,4 +122,99 @@ class UrlControllerTest {
         // Выключаем сервер. Экземпляры нельзя использовать повторно.
         server.shutdown();
     }
+
+    @Test
+    void testNewUrl() {
+
+        HttpResponse<String> response = Unirest
+                .get(baseUrl + "/")
+                .asString();
+
+        assertThat(response.getStatus()).isEqualTo(200);
+    }
+
+    @Test
+    void testNewUrlValid() {
+        // Выполняем POST запрос при помощи агента Unirest
+        HttpResponse<String> responsePost = Unirest
+                // POST запрос на URL
+                .post(baseUrl + "/")
+                // Устанавливаем значения полей
+                .field("url", "https://bazzara.it")
+                // Выполняем запрос и получаем тело ответ с телом в виде строки
+                .asString();
+
+        // Проверяем статус ответа
+        assertThat(responsePost.getStatus()).isEqualTo(302);
+
+        // Проверяем, что url добавлен в БД
+        Url actualUrl = new QUrl()
+                .name.equalTo("https://bazzara.it")
+                .findOne();
+        assertThat(actualUrl).isNotNull();
+
+        // И что её данные соответствуют переданным
+        assertThat(actualUrl.getName()).isEqualTo("https://bazzara.it");
+
+        HttpResponse<String> response = Unirest
+                .get(baseUrl + "/urls")
+                .asString();
+
+        String content = response.getBody();
+        assertThat(content).contains("Ссылка успешно добавлена");
+    }
+
+    @Test
+    void testNewUrlNotValid() {
+        HttpResponse<String> responsePost = Unirest
+                // POST запрос на URL
+                .post(baseUrl + "/")
+                // Устанавливаем значения полей
+                .field("name", "isError")
+                // Выполняем запрос и получаем тело ответ с телом в виде строки
+                .asString();
+        // Проверяем статус ответа
+        assertThat(responsePost.getStatus()).isEqualTo(422);
+
+        Url actualUrl = new QUrl()
+                .name.equalTo("isError")
+                .findOne();
+        // Можно проверить, что такой записи нет в БД
+        assertThat(actualUrl).isNull();
+
+        // Так можно получить содержимое тела ответа
+        String content = responsePost.getBody();
+        // И проверить, что оно не содержит определённую строку
+        assertThat(content).contains("Некорректный URL");
+        // Можно проверить, что такой записи нет в списке
+        assertThat(content).doesNotContain("isError");
+    }
+
+    @Test
+    void testNewDuplicationUrlNotValid() {
+        HttpResponse<String> responsePost = Unirest
+                // POST запрос на URL
+                .post(baseUrl + "/")
+                // Устанавливаем значения полей
+                .field("url", "https://bazzara.de")
+                // Выполняем запрос и получаем тело ответ с телом в виде строки
+                .asString();
+        // Проверяем статус ответа
+        assertThat(responsePost.getStatus()).isEqualTo(302);
+
+        responsePost = Unirest
+                // POST запрос на URL
+                .post(baseUrl + "/")
+                // Устанавливаем значения полей
+                .field("url", "https://bazzara.de")
+                // Выполняем запрос и получаем тело ответ с телом в виде строки
+                .asString();
+        // Проверяем статус ответа
+        assertThat(responsePost.getStatus()).isEqualTo(200);
+
+        // Так можно получить содержимое тела ответа
+        String content = responsePost.getBody();
+        // И проверить, что оно содержит определённую строку
+        assertThat(content).contains("Страница уже существует");
+    }
 }
