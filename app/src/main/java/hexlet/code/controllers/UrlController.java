@@ -19,7 +19,6 @@ public final class UrlController {
         List<Url> urls = new QUrl().orderBy().id.asc().findList();
         ctx.attribute("urls", urls);
         ctx.render("urls.html");
-
     };
 
     public static Handler showUrl = ctx -> {

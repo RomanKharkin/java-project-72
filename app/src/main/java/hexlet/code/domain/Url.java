@@ -19,14 +19,6 @@ public final class Url extends Model {
 
     String name;
 
-    public List<UrlCheck> getUrlChecks() {
-        return urlChecks;
-    }
-
-    public void setUrlChecks(List<UrlCheck> urlChecks) {
-        this.urlChecks = urlChecks;
-    }
-
     @OneToMany(mappedBy = "url")
     List<UrlCheck> urlChecks;
 
@@ -56,5 +48,13 @@ public final class Url extends Model {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<UrlCheck> getUrlChecks() {
+        return urlChecks;
+    }
+
+    public void setUrlChecks(List<UrlCheck> urlChecks) {
+        this.urlChecks = urlChecks;
     }
 }
