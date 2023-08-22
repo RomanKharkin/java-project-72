@@ -21,8 +21,10 @@
                 <td>
                     <a th:text="*{name}" th:href="@{/urls/{id}(id=*{id})}"></a>
                 </td>
-                <td></td>
-                <td></td>
+                <td th:text="${url.urlChecks.size() > 0} ? ${#dates.format(url.getLastCheck().createdAt, 'dd/MM/yyyy HH:mm')} : ''">
+                    27/06/2023 02:43
+                </td>
+                <td th:text="${url.urlChecks.size() > 0} ? ${url.getLastCheck().statusCode} : ''"></td>
             </tr>
             </tbody>
         </table>

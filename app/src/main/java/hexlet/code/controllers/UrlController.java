@@ -51,13 +51,13 @@ public final class UrlController {
         if (new QUrl().name.equalTo(urlToSave).exists()) {
             ctx.sessionAttribute("error", "Страница уже существует");
             ctx.attribute(NEW_URL_FORM_PARAM, newUrl);
-            ctx.render("index.html");
+            ctx.redirect("/urls");
             return;
         }
 
         Url url = new Url(urlToSave);
         url.save();
-        ctx.sessionAttribute("success", "Ссылка успешно добавлена");
+        ctx.sessionAttribute("success", "Страница успешно добавлена");
         ctx.redirect("/urls");
     };
 
@@ -78,6 +78,8 @@ public final class UrlController {
 
             UrlCheck newUrlCheck = new UrlCheck(statusCode, title, h1, description, url);
             newUrlCheck.save();
+
+            ctx.sessionAttribute("success", "Страница успешно проверена");
 
         } catch (Exception e) {
             ctx.sessionAttribute("error", "Некорректная страница");

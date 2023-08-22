@@ -76,7 +76,9 @@ class UrlControllerTest {
 
     @Test
     void testShowUrl() {
-        HttpResponse<String> responsePost = Unirest.post(baseUrl + "/").field("url", "https://bazzara.com").asString();
+        HttpResponse<String> responsePost = Unirest.post(baseUrl + "/urls")
+                .field("url", "https://bazzara.com")
+                .asString();
         assertThat(responsePost.getStatus()).isEqualTo(302);
         Url actualUrl = new QUrl().name.equalTo("https://bazzara.com").findOne();
         assertThat(actualUrl).isNotNull();
@@ -138,7 +140,7 @@ class UrlControllerTest {
         // Выполняем POST запрос при помощи агента Unirest
         HttpResponse<String> responsePost = Unirest
                 // POST запрос на URL
-                .post(baseUrl + "/")
+                .post(baseUrl + "/urls")
                 // Устанавливаем значения полей
                 .field("url", "https://bazzara.it")
                 // Выполняем запрос и получаем тело ответ с телом в виде строки
@@ -161,14 +163,14 @@ class UrlControllerTest {
                 .asString();
 
         String content = response.getBody();
-        assertThat(content).contains("Ссылка успешно добавлена");
+        assertThat(content).contains("Страница успешно добавлена");
     }
 
     @Test
     void testNewUrlNotValid() {
         HttpResponse<String> responsePost = Unirest
                 // POST запрос на URL
-                .post(baseUrl + "/")
+                .post(baseUrl + "/urls")
                 // Устанавливаем значения полей
                 .field("name", "isError")
                 // Выполняем запрос и получаем тело ответ с телом в виде строки
@@ -194,7 +196,7 @@ class UrlControllerTest {
     void testNewDuplicationUrlNotValid() {
         HttpResponse<String> responsePost = Unirest
                 // POST запрос на URL
-                .post(baseUrl + "/")
+                .post(baseUrl + "/urls")
                 // Устанавливаем значения полей
                 .field("url", "https://bazzara.de")
                 // Выполняем запрос и получаем тело ответ с телом в виде строки
@@ -204,16 +206,19 @@ class UrlControllerTest {
 
         responsePost = Unirest
                 // POST запрос на URL
-                .post(baseUrl + "/")
+                .post(baseUrl + "/urls")
                 // Устанавливаем значения полей
                 .field("url", "https://bazzara.de")
+
                 // Выполняем запрос и получаем тело ответ с телом в виде строки
                 .asString();
         // Проверяем статус ответа
-        assertThat(responsePost.getStatus()).isEqualTo(200);
+        assertThat(responsePost.getStatus()).isEqualTo(302);
+        String location = responsePost.getHeaders().get("Location").<String>get(0);
+        HttpResponse<String> responseGet = Unirest.get(baseUrl + location).asString();
 
         // Так можно получить содержимое тела ответа
-        String content = responsePost.getBody();
+        String content = responseGet.getBody();
         // И проверить, что оно содержит определённую строку
         assertThat(content).contains("Страница уже существует");
     }

@@ -2,19 +2,14 @@ package hexlet.code.controllers;
 
 import hexlet.code.App;
 import hexlet.code.domain.Url;
-import hexlet.code.domain.query.QUrl;
 import io.ebean.DB;
 import io.ebean.Database;
 import io.javalin.Javalin;
-import kong.unirest.HttpResponse;
-import kong.unirest.Unirest;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 class RootControllerTest {
     private static Javalin app;
