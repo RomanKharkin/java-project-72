@@ -20,14 +20,19 @@ import java.util.Optional;
 public final class UrlController {
     public static final String NEW_URL_FORM_PARAM = "url";
     public static Handler listUrls = ctx -> {
-        List<Url> urls = new QUrl().orderBy().id.asc().findList();
+        List<Url> urls = new QUrl()
+                .orderBy()
+                .id.asc()
+                .findList();
         ctx.attribute("urls", urls);
         ctx.render("urls.html");
     };
 
     public static Handler showUrl = ctx -> {
         long id = ctx.pathParamAsClass("id", Long.class).getOrDefault(null);
-        Url url = new QUrl().id.equalTo(id).findOne();
+        Url url = new QUrl()
+                .id.equalTo(id)
+                .findOne();
         ctx.attribute("url", url);
         ctx.render("show.html");
     };
@@ -64,7 +69,9 @@ public final class UrlController {
 
     public static Handler checkUrl = ctx -> {
         long id = ctx.pathParamAsClass("id", Long.class).getOrDefault(null);
-        Url url = new QUrl().id.equalTo(id).findOne();
+        Url url = new QUrl()
+                .id.equalTo(id)
+                .findOne();
         HttpResponse<String> responseUrl;
 
         try {

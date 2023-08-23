@@ -115,12 +115,18 @@ class UrlControllerTest {
         HttpResponse<String> responseCreateCheck = Unirest.post(baseUrl + "/urls/" + url.getId() + "/checks")
                 .asString();
         assertThat(responseCreateCheck.getStatus()).isEqualTo(HttpStatus.FOUND);
-        urlChecks = new QUrlCheck().url.equalTo(url).findList();
+
+        urlChecks = new QUrlCheck()
+                .url.equalTo(url)
+                .findList();
+
         assertThat(urlChecks.isEmpty()).isFalse();
         UrlCheck urlCheck = new QUrlCheck().url.equalTo(url).findOne();
+
         assertThat(urlCheck.getDescription()).isEqualTo("description");
         assertThat(urlCheck.getH1()).isEqualTo("Header1");
         assertThat(urlCheck.getTitle()).isEqualTo("title");
+
         // Выключаем сервер. Экземпляры нельзя использовать повторно.
         server.shutdown();
     }
