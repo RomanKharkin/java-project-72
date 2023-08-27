@@ -4,6 +4,7 @@ import hexlet.code.domain.Url;
 import hexlet.code.domain.UrlCheck;
 import hexlet.code.domain.query.QUrl;
 import hexlet.code.domain.query.QUrlCheck;
+import io.ebean.PagedList;
 import io.javalin.http.Handler;
 import io.javalin.http.HttpStatus;
 import kong.unirest.HttpResponse;
@@ -17,16 +18,24 @@ import java.net.URL;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 
 public final class UrlController {
     public static final String NEW_URL_FORM_PARAM = "url";
     public static Handler listUrls = ctx -> {
-        List<Url> urls = new QUrl()
+        int page = ctx.queryParamAsClass("page", Integer.class).getOrDefault(1) - 1;
+        int rowsPerPage = 12;
+
+        PagedList<Url> pagedUrls = new QUrl()
+                .setFirstRow(page * rowsPerPage)
+                .setMaxRows(rowsPerPage)
                 .orderBy()
                 .id.asc()
-                .findList();
+                .findPagedList();
 
+        List<Url> urls = pagedUrls.getList();
 
         Map<Long, UrlCheck> urlChecks = new QUrlCheck()
                 .url.id.asMapKey()
@@ -34,10 +43,20 @@ public final class UrlController {
                 .createdAt.desc()
                 .findMap();
 
-        ctx.attribute("urlChecks", urlChecks);
+        int lastPage = pagedUrls.getTotalPageCount() + 1;
+        int currentPage = pagedUrls.getPageIndex() + 1;
+        List<Integer> pages = IntStream
+                .range(1, lastPage)
+                .boxed()
+                .collect(Collectors.toList());
+
         ctx.attribute("urls", urls);
+        ctx.attribute("urlChecks", urlChecks);
+        ctx.attribute("pages", pages);
+        ctx.attribute("currentPage", currentPage);
         ctx.render("urls.html");
     };
+
 
     public static Handler showUrl = ctx -> {
         long id = ctx.pathParamAsClass("id", Long.class).getOrDefault(null);
