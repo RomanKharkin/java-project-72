@@ -3,6 +3,7 @@ package hexlet.code.controllers;
 import hexlet.code.domain.Url;
 import hexlet.code.domain.UrlCheck;
 import hexlet.code.domain.query.QUrl;
+import hexlet.code.domain.query.QUrlCheck;
 import io.javalin.http.Handler;
 import io.javalin.http.HttpStatus;
 import kong.unirest.HttpResponse;
@@ -14,6 +15,7 @@ import org.jsoup.nodes.Element;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 
@@ -24,6 +26,15 @@ public final class UrlController {
                 .orderBy()
                 .id.asc()
                 .findList();
+
+
+        Map<Long, UrlCheck> urlChecks = new QUrlCheck()
+                .url.id.asMapKey()
+                .orderBy()
+                .createdAt.desc()
+                .findMap();
+
+        ctx.attribute("urlChecks", urlChecks);
         ctx.attribute("urls", urls);
         ctx.render("urls.html");
     };
