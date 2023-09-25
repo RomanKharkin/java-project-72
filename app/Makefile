@@ -16,10 +16,10 @@ install:
 run-install-dist: install run-dist
 
 run:
-	APP_ENV=development ./gradlew run
+	./gradlew run
 
 run-dist:
-	APP_ENV=production ./build/install/app/bin/app
+	./build/install/app/bin/app
 
 stop:
 	./gradlew stop

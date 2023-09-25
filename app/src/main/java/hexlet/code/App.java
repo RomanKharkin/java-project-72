@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static io.javalin.apibuilder.ApiBuilder.get;
@@ -28,22 +29,19 @@ public class App {
         return System.getenv().getOrDefault("APP_ENV", "development");
     }
 
-    private static boolean isProduction() {
-        return getMode().equals("production");
-    }
-
     public static Javalin getApp() throws IOException, SQLException {
         var hikariConfig = new HikariConfig();
-        hikariConfig.setJdbcUrl("jdbc:h2:mem:project;DB_CLOSE_DELAY=-1;");
+        var jdbcDatabaseUrl = Optional
+                .ofNullable(System.getenv("JDBC_DATABASE_URL"))
+                .orElse("jdbc:h2:mem:project;DB_CLOSE_DELAY=-1");
+        hikariConfig.setJdbcUrl(jdbcDatabaseUrl);
 
         var dataSource = new HikariDataSource(hikariConfig);
         var url = App.class.getClassLoader().getResource("migration.sql");
         var file = new File(url.getFile());
-        var sql = Files.lines(file.toPath())
-                .collect(Collectors.joining("\n"));
+        var sql = Files.lines(file.toPath()).collect(Collectors.joining("\n"));
 
-        try (var connection = dataSource.getConnection();
-             var statement = connection.createStatement()) {
+        try (var connection = dataSource.getConnection(); var statement = connection.createStatement()) {
             statement.execute(sql);
         }
         BaseRepository.dataSource = dataSource;
