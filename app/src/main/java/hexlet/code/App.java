@@ -34,6 +34,14 @@ public class App {
         var jdbcDatabaseUrl = Optional
                 .ofNullable(System.getenv("JDBC_DATABASE_URL"))
                 .orElse("jdbc:h2:mem:project;DB_CLOSE_DELAY=-1");
+        var jdbcDatabaseUsername = Optional
+                .ofNullable(System.getenv("JDBC_DATABASE_USERNAME"))
+                .orElse("");
+        var jdbcDatabasePassword = Optional
+                .ofNullable(System.getenv("JDBC_DATABASE_PASSWORD"))
+                .orElse("");
+        hikariConfig.setUsername(jdbcDatabaseUsername);
+        hikariConfig.setPassword(jdbcDatabasePassword);
         hikariConfig.setJdbcUrl(jdbcDatabaseUrl);
 
         var dataSource = new HikariDataSource(hikariConfig);
