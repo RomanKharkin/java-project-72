@@ -61,7 +61,7 @@ class UrlControllerTest {
         hikariConfig.setJdbcUrl("jdbc:h2:mem:project;DB_CLOSE_DELAY=-1;");
 
         var dataSource = new HikariDataSource(hikariConfig);
-        var url = App.class.getClassLoader().getResource("migration.sql");
+        var url = App.class.getClassLoader().getResource("migration_test.sql");
         var file = new File(url.getFile());
         var sql = Files.lines(file.toPath())
                 .collect(Collectors.joining("\n"));
