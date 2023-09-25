@@ -1,35 +1,23 @@
-package hexlet.code.domain;
+package hexlet.code.model;
 
-import io.ebean.Model;
-import io.ebean.annotation.WhenCreated;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
 import java.util.Date;
 
-@Entity
-public final class UrlCheck extends Model {
-    @Id
+public final class UrlCheck {
     long id;
     int statusCode;
     String title;
     String h1;
-    @Lob
     String description;
-    @ManyToOne
-    Url url;
-    @WhenCreated
+    long urlId;
     private Date createdAt;
 
 
-    public UrlCheck(int statusCode, String title, String h1, String description, Url url) {
+    public UrlCheck(int statusCode, String title, String h1, String description, long urlId) {
         this.statusCode = statusCode;
         this.title = title;
         this.h1 = h1;
         this.description = description;
-        this.url = url;
+        this.urlId = urlId;
     }
 
     public long getId() {
@@ -80,11 +68,11 @@ public final class UrlCheck extends Model {
         this.description = description;
     }
 
-    public Url getUrl() {
-        return url;
+    public long getUrlId() {
+        return urlId;
     }
 
-    public void setUrl(Url url) {
-        this.url = url;
+    public void setUrlId(long url_id) {
+        this.urlId = url_id;
     }
 }

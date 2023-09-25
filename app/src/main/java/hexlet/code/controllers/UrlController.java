@@ -1,10 +1,9 @@
 package hexlet.code.controllers;
 
-import hexlet.code.domain.Url;
-import hexlet.code.domain.UrlCheck;
-import hexlet.code.domain.query.QUrl;
-import hexlet.code.domain.query.QUrlCheck;
-import io.ebean.PagedList;
+import hexlet.code.model.Url;
+import hexlet.code.model.UrlCheck;
+import hexlet.code.repository.UrlCheckRepository;
+import hexlet.code.repository.UrlRepository;
 import io.javalin.http.Handler;
 import io.javalin.http.HttpStatus;
 import kong.unirest.HttpResponse;
@@ -13,57 +12,46 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
-import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 
 public final class UrlController {
     public static final String NEW_URL_FORM_PARAM = "url";
     public static Handler listUrls = ctx -> {
-        int page = ctx.queryParamAsClass("page", Integer.class).getOrDefault(1) - 1;
-        int rowsPerPage = 12;
+        List<Url> urls = UrlRepository.getEntities();
 
-        PagedList<Url> pagedUrls = new QUrl()
-                .setFirstRow(page * rowsPerPage)
-                .setMaxRows(rowsPerPage)
-                .orderBy()
-                .id.asc()
-                .findPagedList();
-
-        List<Url> urls = pagedUrls.getList();
-
-        Map<Long, UrlCheck> urlChecks = new QUrlCheck()
-                .url.id.asMapKey()
-                .orderBy()
-                .createdAt.desc()
-                .findMap();
-
-        int lastPage = pagedUrls.getTotalPageCount() + 1;
-        int currentPage = pagedUrls.getPageIndex() + 1;
-        List<Integer> pages = IntStream
-                .range(1, lastPage)
-                .boxed()
-                .collect(Collectors.toList());
+        Map<Long, UrlCheck> urlChecks = urls.stream().filter((url) -> {
+            try {
+                return !UrlCheckRepository.findByUrlId(url.getId()).isEmpty();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }).collect(Collectors.toMap(Url::getId, (url) -> {
+            try {
+                return UrlCheckRepository.findByUrlId(url.getId()).stream().findFirst().get();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }));
 
         ctx.attribute("urls", urls);
         ctx.attribute("urlChecks", urlChecks);
-        ctx.attribute("pages", pages);
-        ctx.attribute("currentPage", currentPage);
         ctx.render("urls.html");
     };
 
 
     public static Handler showUrl = ctx -> {
         long id = ctx.pathParamAsClass("id", Long.class).getOrDefault(null);
-        Url url = new QUrl()
-                .id.equalTo(id)
-                .findOne();
+        Url url = UrlRepository.findById(id).get();
+        var urlChecks = UrlCheckRepository.findByUrlId(url.getId());
         ctx.attribute("url", url);
+        ctx.attribute("urlChecks", urlChecks);
         ctx.render("show.html");
     };
 
@@ -71,19 +59,20 @@ public final class UrlController {
         String newUrl = ctx.formParam(NEW_URL_FORM_PARAM);
         URL javaNetUrl;
         try {
-            javaNetUrl = new URL(newUrl);
-        } catch (MalformedURLException e) {
+            javaNetUrl = new URI(newUrl).toURL();
+        } catch (RuntimeException e) {
             ctx.sessionAttribute("error", "Некорректный URL");
-            ctx.attribute(NEW_URL_FORM_PARAM, newUrl);
+            ctx.attribute(NEW_URL_FORM_PARAM, "");
             ctx.status(HttpStatus.UNPROCESSABLE_CONTENT);
             ctx.render("index.html");
             return;
         }
 
         String urlToSave = new URL(javaNetUrl.getProtocol(), javaNetUrl.getHost(), javaNetUrl.getPort(), "")
+                .toURI()
                 .toString();
 
-        if (new QUrl().name.equalTo(urlToSave).exists()) {
+        if (UrlRepository.findByName(urlToSave).isPresent()) {
             ctx.sessionAttribute("error", "Страница уже существует");
             ctx.attribute(NEW_URL_FORM_PARAM, newUrl);
             ctx.redirect("/urls");
@@ -91,7 +80,7 @@ public final class UrlController {
         }
 
         Url url = new Url(urlToSave);
-        url.save();
+        UrlRepository.save(url);
         ctx.sessionAttribute("success", "Страница успешно добавлена");
         ctx.redirect("/urls");
     };
@@ -99,9 +88,7 @@ public final class UrlController {
 
     public static Handler checkUrl = ctx -> {
         long id = ctx.pathParamAsClass("id", Long.class).getOrDefault(null);
-        Url url = new QUrl()
-                .id.equalTo(id)
-                .findOne();
+        Url url = UrlRepository.findById(id).get();
         HttpResponse<String> responseUrl;
 
         try {
@@ -113,8 +100,8 @@ public final class UrlController {
             String description = Optional.ofNullable(doc.select("meta[name='description']").first())
                     .orElse(new Element("meta")).attr("content");
 
-            UrlCheck newUrlCheck = new UrlCheck(statusCode, title, h1, description, url);
-            newUrlCheck.save();
+            UrlCheck newUrlCheck = new UrlCheck(statusCode, title, h1, description, url.getId());
+            UrlCheckRepository.save(newUrlCheck);
 
             ctx.sessionAttribute("success", "Страница успешно проверена");
 
