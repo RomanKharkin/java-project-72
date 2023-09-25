@@ -33,6 +33,4 @@ class RootControllerTest {
     void getApp() throws SQLException, IOException {
         Assertions.assertNotNull(App.getApp());
     }
-
-
 }

@@ -72,7 +72,7 @@ public final class UrlCheck {
         return urlId;
     }
 
-    public void setUrlId(long url_id) {
-        this.urlId = url_id;
+    public void setUrlId(long urlId) {
+        this.urlId = urlId;
     }
 }
