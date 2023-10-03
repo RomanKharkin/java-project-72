@@ -26,19 +26,7 @@ public final class UrlController {
     public static Handler listUrls = ctx -> {
         List<Url> urls = UrlRepository.getEntities();
 
-        Map<Long, UrlCheck> urlChecks = urls.stream().filter((url) -> {
-            try {
-                return !UrlCheckRepository.findByUrlId(url.getId()).isEmpty();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        }).collect(Collectors.toMap(Url::getId, (url) -> {
-            try {
-                return UrlCheckRepository.findByUrlId(url.getId()).stream().findFirst().get();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        }));
+        Map<Long, UrlCheck> urlChecks = UrlCheckRepository.findLatestChecks();
 
         ctx.attribute("urls", urls);
         ctx.attribute("urlChecks", urlChecks);
