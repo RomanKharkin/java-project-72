@@ -61,7 +61,6 @@ public class App {
         });
 
         addRoutes(app);
-        System.out.println();
 
         return app;
     }
