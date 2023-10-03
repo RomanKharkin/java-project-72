@@ -14,11 +14,9 @@ import org.jsoup.nodes.Element;
 
 import java.net.URI;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 
 public final class UrlController {

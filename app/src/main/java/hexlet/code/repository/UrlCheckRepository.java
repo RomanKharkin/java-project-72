@@ -6,14 +6,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.Instant;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 
 public class UrlCheckRepository extends BaseRepository {
     public static void save(UrlCheck urlCheck) throws SQLException {
         var sql = "INSERT INTO url_checks (url_id, status_code, h1, description, title, created_at)"
                 + " VALUES (?, ?, ?, ?, ?, ?)";
-//        var datetime = new Timestamp(System.currentTimeMillis());
         Instant datetime = Instant.now();
         try (var conn = dataSource.getConnection();
              var preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
