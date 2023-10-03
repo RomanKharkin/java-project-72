@@ -25,8 +25,8 @@ public final class Url {
         return createdAt;
     }
 
-    public void setCreatedAt() {
-        Instant updatedAt = createdAt;
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
     }
 
     public String getName() {

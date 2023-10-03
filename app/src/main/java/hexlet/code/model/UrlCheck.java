@@ -1,6 +1,6 @@
 package hexlet.code.model;
 
-import java.util.Date;
+import java.time.Instant;
 
 public final class UrlCheck {
     long id;
@@ -9,7 +9,7 @@ public final class UrlCheck {
     String h1;
     String description;
     long urlId;
-    private Date createdAt;
+    private Instant createdAt;
 
 
     public UrlCheck(int statusCode, String title, String h1, String description, long urlId) {
@@ -28,11 +28,11 @@ public final class UrlCheck {
         this.id = id;
     }
 
-    public Date getCreatedAt() {
+    public Instant getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Instant createdAt) {
         this.createdAt = createdAt;
     }
 

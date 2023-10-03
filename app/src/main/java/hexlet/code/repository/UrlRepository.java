@@ -5,6 +5,7 @@ import hexlet.code.model.Url;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -13,16 +14,16 @@ import java.util.Optional;
 public class UrlRepository extends BaseRepository {
     public static void save(Url url) throws SQLException {
         var sql = "INSERT INTO urls (name, created_at) VALUES (?, ?)";
-        var datetime = new Timestamp(System.currentTimeMillis());
+        var datetime = Instant.now();
         try (var conn = dataSource.getConnection();
              var preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, url.getName());
-            preparedStatement.setTimestamp(2, datetime);
+            preparedStatement.setTimestamp(2, Timestamp.from(datetime));
             preparedStatement.executeUpdate();
             var generatedKeys = preparedStatement.getGeneratedKeys();
             if (generatedKeys.next()) {
                 url.setId(generatedKeys.getLong(1));
-                url.setCreatedAt();
+                url.setCreatedAt(datetime);
             } else {
                 throw new SQLException("DB have not returned an id after saving an entity");
             }
@@ -37,10 +38,10 @@ public class UrlRepository extends BaseRepository {
             var resultSet = stmt.executeQuery();
             if (resultSet.next()) {
                 var name = resultSet.getString("name");
-                var createdAt = resultSet.getTimestamp("created_at");
+                var createdAt = resultSet.getTimestamp("created_at").toInstant();
                 var url = new Url(name);
                 url.setId(id);
-                url.setCreatedAt();
+                url.setCreatedAt(createdAt);
 
                 return Optional.of(url);
             }
@@ -56,11 +57,11 @@ public class UrlRepository extends BaseRepository {
             var resultSet = stmt.executeQuery();
             if (resultSet.next()) {
                 var name = resultSet.getString("name");
-                var createdAt = resultSet.getTimestamp("created_at");
+                var createdAt = resultSet.getTimestamp("created_at").toInstant();
                 var id = resultSet.getLong("id");
                 var url = new Url(name);
                 url.setId(id);
-                url.setCreatedAt();
+                url.setCreatedAt(createdAt);
 
                 return Optional.of(url);
             }
@@ -76,11 +77,11 @@ public class UrlRepository extends BaseRepository {
             var resultSet = stmt.executeQuery();
             if (resultSet.next()) {
                 var name = resultSet.getString("name");
-                var createdAt = resultSet.getTimestamp("created_at");
+                var createdAt = resultSet.getTimestamp("created_at").toInstant();
                 var urlId = resultSet.getLong("id");
                 var url = new Url(name);
-                url.setId(id);
-                url.setCreatedAt();
+                url.setId(urlId);
+                url.setCreatedAt(createdAt);
 
                 return Optional.of(url);
             }
@@ -97,10 +98,10 @@ public class UrlRepository extends BaseRepository {
             while (resultSet.next()) {
                 var id = resultSet.getLong("id");
                 var name = resultSet.getString("name");
-                var createdAt = resultSet.getTimestamp("created_at");
+                var createdAt = resultSet.getTimestamp("created_at").toInstant();
                 var url = new Url(name);
                 url.setId(id);
-                url.setCreatedAt();
+                url.setCreatedAt(createdAt);
                 result.add(url);
             }
             return result;

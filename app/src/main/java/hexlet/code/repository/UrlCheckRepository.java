@@ -5,6 +5,7 @@ import hexlet.code.model.UrlCheck;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -14,7 +15,8 @@ public class UrlCheckRepository extends BaseRepository {
     public static void save(UrlCheck urlCheck) throws SQLException {
         var sql = "INSERT INTO url_checks (url_id, status_code, h1, description, title, created_at)"
                 + " VALUES (?, ?, ?, ?, ?, ?)";
-        var datetime = new Timestamp(System.currentTimeMillis());
+//        var datetime = new Timestamp(System.currentTimeMillis());
+        Instant datetime = Instant.now();
         try (var conn = dataSource.getConnection();
              var preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setLong(1, urlCheck.getUrlId());
@@ -22,7 +24,7 @@ public class UrlCheckRepository extends BaseRepository {
             preparedStatement.setString(3, urlCheck.getH1());
             preparedStatement.setString(4, urlCheck.getDescription());
             preparedStatement.setString(5, urlCheck.getTitle());
-            preparedStatement.setTimestamp(6, datetime);
+            preparedStatement.setTimestamp(6, Timestamp.from(datetime));
             preparedStatement.executeUpdate();
             var generatedKeys = preparedStatement.getGeneratedKeys();
             if (generatedKeys.next()) {
@@ -46,7 +48,7 @@ public class UrlCheckRepository extends BaseRepository {
                 var h1 = resultSet.getString("h1");
                 var description = resultSet.getString("description");
                 var title = resultSet.getString("title");
-                var createdAt = resultSet.getTimestamp("created_at");
+                var createdAt = resultSet.getTimestamp("created_at").toInstant();
                 var urlCheck = new UrlCheck(statusCode, title, h1, description, urlId);
                 urlCheck.setId(id);
                 urlCheck.setCreatedAt(createdAt);
@@ -72,7 +74,7 @@ public class UrlCheckRepository extends BaseRepository {
                 var h1 = resultSet.getString("h1");
                 var description = resultSet.getString("description");
                 var title = resultSet.getString("title");
-                var createdAt = resultSet.getTimestamp("created_at");
+                Instant createdAt = resultSet.getTimestamp("created_at").toInstant();
                 var urlCheck = new UrlCheck(statusCode, title, h1, description, urlId);
                 urlCheck.setId(id);
                 urlCheck.setCreatedAt(createdAt);
@@ -97,7 +99,7 @@ public class UrlCheckRepository extends BaseRepository {
                 var h1 = resultSet.getString("h1");
                 var description = resultSet.getString("description");
                 var title = resultSet.getString("title");
-                var createdAt = resultSet.getTimestamp("created_at");
+                var createdAt = resultSet.getTimestamp("created_at").toInstant();
                 var urlCheck = new UrlCheck(statusCode, title, h1, description, urlId);
                 urlCheck.setId(id);
                 urlCheck.setCreatedAt(createdAt);
