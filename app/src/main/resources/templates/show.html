@@ -18,7 +18,7 @@
             </tr>
             <tr>
                 <td>Дата создания</td>
-                <td th:text="${#dates.format(url.createdAt, 'dd/MM/yyyy HH:mm')}">27/06/2023 02:43</td>
+                <td th:text="${#temporals.format(url.createdAt, 'dd/MM/yyyy HH:mm')}">27/06/2023 02:43</td>
             </tr>
             </tbody>
         </table>
@@ -46,7 +46,7 @@
                 <td th:text="*{urlCheck.title}">Title</td>
                 <td th:text="*{urlCheck.h1}">H1</td>
                 <td th:text="*{urlCheck.description}">Descr</td>
-                <td th:text="${#dates.format(urlCheck.createdAt, 'dd/MM/yyyy HH:mm')}">27/06/2023 02:43</td>
+                <td th:text="${#temporals.format(urlCheck.createdAt, 'dd/MM/yyyy HH:mm')}">27/06/2023 02:43</td>
             </tr>
             </tbody>
         </table>
